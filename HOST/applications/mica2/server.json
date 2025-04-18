@@ -1,0 +1,47 @@
+{
+  "dir_client": {
+    "etcd_addr": "10.0.0.1",
+    "etcd_port": 2379
+  },
+
+  "alloc": {
+    /*"num_pages_to_free": [4]*/
+    /*"num_pages_to_free": [4]*/
+    "num_pages_to_reserve": [8],
+    "hugetlbfs_path": "/mnt/huge_mica/",
+    "verbose": true
+  },
+
+  "processor": {
+    "lcores": [0],
+    "partition_count": 2,
+
+    "total_size":  2147483648 ,      /* 2 GiB */
+    "total_item_count": 33554432,  /* 192 Mi */
+
+    "concurrent_read": false,
+    "concurrent_write": false,
+    "verbose": true
+  },
+  "network": {
+    "numa_id": 0,
+    "ipv4_addr": "10.60.0.1",
+    "mac_addr": "12:34:56:78:9A:BC",
+    "lcores": [0],
+
+    "ports": [
+      {"port_id": 0, "ipv4_addr": "10.60.0.1"}
+    ],
+
+    "endpoints": [
+      [0, 0]
+    ],
+
+    "dpdk_args": ["-l", "0", "--socket-mem=2048", "-a", "0000:51:00.0"],
+    "verbose": true
+  },
+
+  "server": {
+    "rebalance_interval": 0
+  }
+}
