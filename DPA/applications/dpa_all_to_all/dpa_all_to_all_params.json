@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2022-2023 NVIDIA CORPORATION & AFFILIATES, ALL RIGHTS RESERVED.
+ *
+ * This software product is a proprietary product of NVIDIA CORPORATION &
+ * AFFILIATES (the "Company") and all right, title, and interest in and to the
+ * software product, including all associated intellectual property rights, are
+ * and shall remain exclusively with the Company.
+ *
+ * This software product is governed by the End User License Agreement
+ * provided with the software product.
+ *
+ */
+{
+"doca_general_flags":{
+
+	// -l - Set the (numeric) log level for the program <10=DISABLE, 20=CRITICAL, 30=ERROR, 40=WARNING, 50=INFO, 60=DEBUG, 70=TRACE>
+	"log-level": 60
+},
+"doca_program_flags":{
+
+	// The message size - the size of the sendbuf and recvbuf (in bytes). Must be in multiplies of integer size. Default is size of one integer times the number of processes.
+	"msgsize": -1,
+
+	// IB devices names that supports DPA, can provide max of two IB devices. If not provided then a random IB device will be chosen.
+	"devices": "NOT_SET"
+}
+}

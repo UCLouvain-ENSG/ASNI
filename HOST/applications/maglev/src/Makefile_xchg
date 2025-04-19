@@ -1,0 +1,46 @@
+NO_MBUF_XCHG=1
+
+ifeq ($(RTE_SDK),)
+	$(error "Please define RTE_SDK environment variable")
+endif
+
+include $(RTE_SDK)/mk/rte.vars.mk
+
+
+ifeq ($(VER),minimal)
+APP = maglev_asni_xchg-minimal
+CFLAGS += -DHAVE_MINIMAL=1
+else
+APP = asni_xchg_maglev_offload_tx
+endif
+
+ifeq ($(NOCQE),1)
+APP := $(APP)-nocqe
+CFLAGS += -DHAVE_NOCQE=1
+endif
+
+ifeq ($(RTC),1)
+APP := $(APP)-rtc
+CFLAGS += -DHAVE_RTC=1
+endif
+
+CFLAGS += -gdwarf -g -ggdb
+
+# all source are stored in SRCS-y
+SRCS-y := ../dpdk_maglev.cpp ../xchg.c ../maglev.hpp 
+
+# Default target, detect a build directory, by looking for a path with a .config
+RTE_TARGET ?= $(notdir $(abspath $(dir $(firstword $(wildcard $(RTE_SDK)/*/.config)))))
+
+
+ifeq (${CONFIG_RTE_XCHG_MBUF},y})
+$(error "This example cannot be built with XCHG_MBUF enabled.")
+endif
+LDFLAGS += -lstdc++
+CFLAGS += -I../../../../../utils
+CFLAGS += -O3 -lstdc++
+CFLAGS += -Wno-unused-parameter
+# Add flag to allow experimental API as l2fwd uses rte_ethdev_set_ptype API
+CFLAGS += -DALLOW_EXPERIMENTAL_API
+CFLAGS += -DFAKE_DPDK_MODE_DPDK_ASQ -DXCHG -DFAKE_DPDK_DESC_SIZE -DXCHG_ASNI -DOFFLOAD_TX
+include $(RTE_SDK)/mk/rte.extapp.mk

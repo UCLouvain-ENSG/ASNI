@@ -1,0 +1,7 @@
+# Please keep these options sorted alphabetically.
+
+option('exec_type', type: 'string', value: '', description:
+       'Compile with doca_dpdk or patched_dpdk version')
+option('HOME', type: 'string', value: '', description:
+       'PATH to home')
+

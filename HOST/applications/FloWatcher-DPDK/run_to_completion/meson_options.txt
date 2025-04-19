@@ -1,0 +1,5 @@
+option('DPDK_VER', type: 'string', value: 'DPDK', description:
+       'Can be either DPDK or XCHG')
+option('HOME', type: 'string', value: '', description:
+       'PATH to home')
+
