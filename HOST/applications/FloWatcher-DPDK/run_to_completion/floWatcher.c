@@ -1,4 +1,3 @@
-
 #include <endian.h>
 #define _GNU_SOURCE
 #include <inttypes.h>
