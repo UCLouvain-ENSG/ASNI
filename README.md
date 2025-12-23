@@ -54,4 +54,15 @@ sudo LD_LIBRARY_PATH=$LD_LIBRARY_PATH  ./build/asni_dd_floWatcher_base -l 0-1 -a
 
 ## Citing ASNI
 
-TODO once published
+```text
+@article{tyunyayev2025asni,
+  title={ASNI: Redefining the Interface Between SmartNICs and Applications},
+  author={Tyunyayev, Nikita and Delzotti, Cl{\'e}ment and Eran, Haggai and Barbette, Tom},
+  journal={Proceedings of the ACM on Networking},
+  volume={3},
+  number={CoNEXT2},
+  pages={1--22},
+  year={2025},
+  publisher={ACM New York, NY, USA}
+}
+
